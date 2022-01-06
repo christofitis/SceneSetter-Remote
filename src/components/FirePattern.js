@@ -20,7 +20,7 @@ export default function Fire(props) {
 
     const handleRunPattern = () => {
         fetch(props.workingIP + "/start/" + currentPatternData['sceneid'],{
-          method: "POST",
+          method: "GET",
           headers: {
               "Content-Type": "text/plain",
           },
@@ -54,14 +54,24 @@ export default function Fire(props) {
                 <NumberSlider valueLabel="auto" width={100} height={200} orientation="vertical" color="rgb(0,255,0)" size="medium" min={0} max={255} defaultValue={50} setValue={e => setCurrentPatternData({...currentPatternData, 'green_on':e})}></NumberSlider>
                 <NumberSlider valueLabel="auto" width={100} height={200} orientation="vertical" color="rgb(0,0,255)" size="medium" min={0} max={255} defaultValue={50} setValue={e => setCurrentPatternData({...currentPatternData, 'blue_on':e})}></NumberSlider>
             </Box>
+            <br></br>
+            <Box  display="flex"
+                justifyContent="center"
+                alignItems="center"
+                style={{backgroundColor:"rgb(" + currentPatternData['red_off'] + "," + currentPatternData['green_off'] + "," + currentPatternData['blue_off'] + ")"}}
+                >
+                <NumberSlider valueLabel="auto" width={100} height={200} orientation="vertical" color="rgb(255,0,0)" size="medium" min={0} max={255} defaultValue={50} setValue={e => setCurrentPatternData({...currentPatternData, 'red_off':e})}></NumberSlider>
+                <NumberSlider valueLabel="auto" width={100} height={200} orientation="vertical" color="rgb(0,255,0)" size="medium" min={0} max={255} defaultValue={50} setValue={e => setCurrentPatternData({...currentPatternData, 'green_off':e})}></NumberSlider>
+                <NumberSlider valueLabel="auto" width={100} height={200} orientation="vertical" color="rgb(0,0,255)" size="medium" min={0} max={255} defaultValue={50} setValue={e => setCurrentPatternData({...currentPatternData, 'blue_off':e})}></NumberSlider>
+            </Box>
             <br/>
             <Stack spacing={8} alignItems="center">
-            <NumberSlider label={"Brightness: " + parseInt(100*currentPatternData['brightness']) + "%"} width={300} height={0} orientation="horizontal" color="" size="medium" min={1} max={100} defaultValue={100*props.currentPatternData['brightness']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'brightness':e/100})}></NumberSlider>
-            <NumberSlider label={"Fade Speed Multiplier: " + parseInt(currentPatternData['fade_speed_multiplier'])} width={300} height={0} orientation="horizontal" color="" size="medium" min={1} max={100} defaultValue={props.currentPatternData['fade_speed_multiplier']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'fade_speed_multiplier':e})}></NumberSlider>
-            <NumberSlider label={"Fade Speed Min: " + currentPatternData['fade_speed_min']} width={300} height={0} orientation="horizontal" color="" size="medium" min={0} max={100} defaultValue={props.currentPatternData['fade_speed_min']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'fade_speed_min':e/1000})}></NumberSlider>
-            <NumberSlider label={"Fade Speed Max: " + currentPatternData['fade_speed_max']} width={300} height={0} orientation="horizontal" color="" size="medium" min={0} max={100} defaultValue={props.currentPatternData['fade_speed_max']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'fade_speed_max':e/1000})}></NumberSlider>
-            <NumberSlider label={"Fade Up Chance: " + currentPatternData['fade_up_chance_ratio']} width={300} height={0} orientation="horizontal" color="" size="medium" min={2} max={10000} defaultValue={props.currentPatternData['fade_up_chance_ratio']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'fade_up_chance_ratio':e})}></NumberSlider>
-                  
+            <NumberSlider label={"brightness: " + parseInt(100*currentPatternData['brightness']) + "%"} width={300} height={0} orientation="horizontal" color="" size="medium" min={1} max={100} defaultValue={100*props.currentPatternData['brightness']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'brightness':e/100})}></NumberSlider>
+            <NumberSlider label={"Speed: " + currentPatternData['speed_max']} width={300} height={0} orientation="horizontal" color="" size="medium" min={1} max={100} defaultValue={10000*props.currentPatternData['speed_max']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'speed_max':e/10000})}></NumberSlider>
+            <NumberSlider label={"Octives: " + currentPatternData['octives']} width={300} height={0} orientation="horizontal" color="" size="medium" min={1} max={10} defaultValue={props.currentPatternData['octives']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'octives':e})}></NumberSlider>
+            <NumberSlider label={"Persistence: " + currentPatternData['persistence']} width={300} height={0} orientation="horizontal" color="" size="medium" min={1} max={300} defaultValue={100*props.currentPatternData['persistence']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'persistence':e/100})}></NumberSlider>
+            <NumberSlider label={"Lacunarity: " + currentPatternData['lacunarity']} width={300} height={0} orientation="horizontal" color="" size="medium" min={1} max={300} defaultValue={100*props.currentPatternData['lacunarity']} setValue={(e) => setCurrentPatternData({...currentPatternData, 'lacunarity':e/100})}></NumberSlider>
+
             </Stack>
         </div>
     );

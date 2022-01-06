@@ -47,7 +47,7 @@ function App() {
   const handleStart = (sceneid) => {
     if (!deleteMode){
       fetch(workingIP + "/start/" + sceneid,{
-        method: "POST",
+        method: "GET",
         headers: {
             "Content-Type": "text/plain",
         },
