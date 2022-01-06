@@ -21,7 +21,7 @@ export default function Crawl(props) {
 
     const handleRunPattern = () => {
         fetch(props.workingIP + "/start/" + currentPatternData['sceneid'],{
-          method: "POST",
+          method: "GET",
           headers: {
               "Content-Type": "text/plain",
           },
