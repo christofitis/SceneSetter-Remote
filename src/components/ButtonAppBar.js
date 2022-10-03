@@ -223,22 +223,22 @@ export default function ButtonAppBar(props) {
     console.log('new pattern');
       switch(currentPattern['pattern']){
         case 'fire':
-          setPatternControls(<Fire numLeds={numLeds} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Fire>);
+          setPatternControls(<Fire numLeds={numLeds} key={currentPattern["id"]} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Fire>);
           break;
         case 'solid':
-          setPatternControls(<Solid numLeds={numLeds} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Solid>);
+          setPatternControls(<Solid numLeds={numLeds} key={currentPattern["id"]} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Solid>);
           break
         case 'pulse':
-          setPatternControls(<Pulse numLeds={numLeds} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Pulse>);
+          setPatternControls(<Pulse numLeds={numLeds} key={currentPattern["id"]} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Pulse>);
           break
         case 'crawl':
-          setPatternControls(<Crawl numLeds={numLeds} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Crawl>);
+          setPatternControls(<Crawl numLeds={numLeds} key={currentPattern["id"]} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Crawl>);
           break
         case 'marquee':
-          setPatternControls(<Marquee numLeds={numLeds} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Marquee>);
+          setPatternControls(<Marquee numLeds={numLeds} key={currentPattern["id"]} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></Marquee>);
           break
         case 'scifi_computer':
-          setPatternControls(<ScifiComputer numLeds={numLeds} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></ScifiComputer>);
+          setPatternControls(<ScifiComputer numLeds={numLeds} key={currentPattern["id"]} workingIP={props.workingIP} currentPatternData={currentPattern} saveData={handlePatternUpdateData} onDelete={handleDeleteLayout}></ScifiComputer>);
           break
       }
     
@@ -324,7 +324,7 @@ export default function ButtonAppBar(props) {
            >
          {layouts.map((layout, i) => {
            return (
-            <ToggleButton key={layout['id']} value={layout} onClick={() => setCurrentPattern(layout)}>{layout['pattern']} </ToggleButton>
+            <ToggleButton key={layout['id']} value={layout} onClick={() => setCurrentPattern(layout)}>{layout['pattern']} ({layout['start']})</ToggleButton>
            )
          })
          }
