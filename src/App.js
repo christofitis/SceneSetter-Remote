@@ -90,7 +90,7 @@ function App() {
     const findSceneSetterPi = () => {
      let ipCount = 1;
       for (let i = 1; i < 255; i++){
-        fetch("http://192.168.1." + i + ":5000/",{
+        fetch("http://192.168.1." + i + ":5001/",{
           method: "GET",
           headers: {
               "Content-Type": "text/plain",
@@ -101,7 +101,7 @@ function App() {
           if (ipCount >= 254){
             setSearchingForSceneSetter(null);
           }
-          setFoundSceneSetters(prev => [...prev, {"name": data["name"], "ip": "http://192.168.1." + i + ":5000"}]);
+          setFoundSceneSetters(prev => [...prev, {"name": data["name"], "ip": "http://192.168.1." + i + ":5001"}]);
         })
         .catch(e => {
           ipCount += 1;
